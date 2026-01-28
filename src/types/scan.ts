@@ -37,4 +37,13 @@ export interface ScanReport {
   ollama_summary?: string;
 }
 
+export interface ScanListItem {
+  scan_id: string;
+  scope: string;
+  status: "running" | "completed" | "failed";
+  created_at: string;
+  ollama_enabled: boolean;
+  ollama_summary?: string;
+}
+
 export type InputType = "domain" | "url" | "invalid";

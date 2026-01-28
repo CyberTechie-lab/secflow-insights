@@ -1,4 +1,4 @@
-import { Shield } from "lucide-react";
+import { Shield, LayoutDashboard } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function Header() {
@@ -12,6 +12,13 @@ export function Header() {
           </span>
         </Link>
         <nav className="flex items-center gap-6">
+          <Link 
+            to="/dashboard" 
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1.5"
+          >
+            <LayoutDashboard className="h-4 w-4" />
+            Dashboard
+          </Link>
           <Link 
             to="/" 
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"

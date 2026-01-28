@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
 import ScanStatus from "./pages/ScanStatus";
 import ScanResults from "./pages/ScanResults";
+import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -18,6 +19,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/scan/:scanId" element={<ScanStatus />} />
           <Route path="/scan/:scanId/results" element={<ScanResults />} />
           <Route path="*" element={<NotFound />} />
