@@ -1,4 +1,4 @@
-import { ScanRequest, ScanResponse, ScanStatus, ScanReport } from "@/types/scan";
+import { ScanRequest, ScanResponse, ScanStatus, ScanReport, ScanListItem } from "@/types/scan";
 
 // Configure this when backend is deployed
 const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
@@ -36,6 +36,21 @@ export const api = {
   async getScanReport(scanId: string): Promise<ScanReport> {
     const response = await fetch(`${API_BASE_URL}/scan/${scanId}/report`);
     return handleResponse<ScanReport>(response);
+  },
+
+  async listScans(): Promise<ScanListItem[]> {
+    const response = await fetch(`${API_BASE_URL}/scans`);
+    return handleResponse<ScanListItem[]>(response);
+  },
+
+  async deleteScan(scanId: string): Promise<void> {
+    const response = await fetch(`${API_BASE_URL}/scan/${scanId}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) {
+      const message = await response.text().catch(() => "Unknown error");
+      throw new ApiError(response.status, message);
+    }
   },
 };
 
